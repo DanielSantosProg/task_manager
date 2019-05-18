@@ -23,32 +23,48 @@
                 <li @if($current == "principal") class = "active" @endif>
                     <a href="/">Página Inicial</a>
                 </li>
-                <li @if($current == "categorias") class = "active" @endif>
-                    <a href="#categoriasSubmenu"  data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Tarefas</a>
-                    <ul class="collapse list-unstyled" id="categoriasSubmenu">
+                <li @if($current == "tarefas") class = "active" @endif>
+                    <a href="#tarefasSubmenu"  data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Tarefas</a>
+                    <ul class="collapse list-unstyled" id="tarefasSubmenu">
                         <li>
-                            <a href="" }}>Nova</a>
+                            <a href="{{route('tarefas.create')}}" }}>Nova tarefa</a>
                         </li>
                         <li>
-                            <a href="">Listar</a>
+                            <a href="{{route('tarefas.index')}}">Listar tarefas</a>
+                        </li>                        
+                    </ul>
+                </li>
+                <li @if($current == "tipos") class = "active" @endif >
+                    <a href="#tiposSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Tipos de tarefas</a>
+                    <ul class="collapse list-unstyled" id="tiposSubmenu">
+                        <li>
+                            <a href="{{route('tipos.create')}}">Cadastrar novo tipo de tarefa</a>
                         </li>
                         <li>
-                            <a href="">Restaurar</a>
+                            <a href="{{route('tipos.index')}}">Listar tipos de tarefas</a>
                         </li>
                     </ul>
                 </li>
-                <li @if($current == "produtos") class = "active" @endif >
-                    <a href="#produtosSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Usuários</a>
-                    <ul class="collapse list-unstyled" id="produtosSubmenu">
+                <li @if($current == "usuarios") class = "active" @endif >
+                    <a href="#usuariosSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Usuários</a>
+                    <ul class="collapse list-unstyled" id="usuariosSubmenu">                        
                         <li>
-                            <a href="">Novo</a>
-                        </li>
-                        <li>
-                            <a href="">Listar</a>
+                            <a href="{{route('usuarios.index')}}">Listar usuarios</a>
                         </li>
                     </ul>
-                </li>                
+                </li>                                 
             </ul>
+            <div>
+                <a class="btn btn-danger" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Sair') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+            </div>
             
         </nav>
 

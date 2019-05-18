@@ -42,14 +42,7 @@ class TipoController extends Controller
     public function store(Request $request)
     {
         $tipo = new Tipo();
-        $tipo->titulo = $request->input("titulo");
-        $tipo->id_usuario = $request->input("id_usuario");
-        $tipo->id_tipo = $request->input("id_tipo");
-        $tipo->privacidade = $request->input("privacidade");
-        $tipo->descricao = $request->input("descricao");
-        $tipo->tipo = $request->input("tipo");
-        $tipo->status = $request->input("status");
-        $tipo->data_conclusao = $request->input("data_conclusao");
+        $tipo->nome = $request->input("nome");       
         $tipo->save();
         return redirect()->route('tipos.index');
     }
@@ -85,14 +78,7 @@ class TipoController extends Controller
      */
     public function update(Request $request, Tipo $tipo)
     {
-        $tipo->titulo = $request->input("titulo");
-        $tipo->id_usuario = $request->input("id_usuario");
-        $tipo->id_tipo = $request->input("id_tipo");
-        $tipo->privacidade = $request->input("privacidade");
-        $tipo->descricao = $request->input("descricao");
-        $tipo->tipo = $request->input("tipo");
-        $tipo->status = $request->input("status");
-        $tipo->data_conclusao = $request->input("data_conclusao");
+        $tipo->nome = $request->input("nome");     
         $tipo->save();
         return redirect()->route('tipos.index');
     }

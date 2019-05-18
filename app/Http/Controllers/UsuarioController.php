@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Usuario;
+use App\User;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
@@ -14,7 +15,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::all();
+        $usuarios = User::all();
         return view('usuarios_listar', compact('usuarios'));
     }
 
