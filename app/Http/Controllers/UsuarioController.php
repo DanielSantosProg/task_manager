@@ -14,7 +14,13 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = Usuario::all();
+        return view('usuarios_listar', compact('usuarios'));
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
     /**
@@ -24,7 +30,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        return view('usuario_cadastrar');
     }
 
     /**
@@ -35,7 +41,16 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Usuario();
+        $usuario->nome = $request->input("nome");
+        $usuario->sexo = $request->input("sexo");
+        $usuario->data_nasc = $request->input("data_nasc");
+        $usuario->email = $request->input("email");
+        $usuario->telefone = $request->input("telefone");
+        $usuario->login = $request->input("login");
+        $usuario->senha = $request->input("senha");
+        $usuario->save();
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -57,7 +72,7 @@ class UsuarioController extends Controller
      */
     public function edit(Usuario $usuario)
     {
-        //
+        return view('usuario_editar', compact('usuario'));
     }
 
     /**
@@ -69,7 +84,15 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
-        //
+        $usuario->nome = $request->input("nome");
+        $usuario->sexo = $request->input("sexo");
+        $usuario->data_nasc = $request->input("data_nasc");
+        $usuario->email = $request->input("email");
+        $usuario->telefone = $request->input("telefone");
+        $usuario->login = $request->input("login");
+        $usuario->senha = $request->input("senha");
+        $usuario->save();
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -80,6 +103,7 @@ class UsuarioController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        $usuario->delete();
+        return redirect()->route('usuarios.index');
     }
 }

@@ -14,7 +14,13 @@ class TarefaController extends Controller
      */
     public function index()
     {
-        //
+        $tarefas = Tarefa::all();
+        return view('tarefas_listar', compact('tarefas'));
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
     /**
@@ -24,7 +30,7 @@ class TarefaController extends Controller
      */
     public function create()
     {
-        //
+        return view('tarefa_cadastrar');
     }
 
     /**
@@ -35,7 +41,17 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tarefa = new Tarefa();
+        $tarefa->titulo = $request->input("titulo");
+        $tarefa->id_usuario = $request->input("id_usuario");
+        $tarefa->id_tipo = $request->input("id_tipo");
+        $tarefa->privacidade = $request->input("privacidade");
+        $tarefa->descricao = $request->input("descricao");
+        $tarefa->tipo = $request->input("tipo");
+        $tarefa->status = $request->input("status");
+        $tarefa->data_conclusao = $request->input("data_conclusao");
+        $tarefa->save();
+        return redirect()->route('tarefas.index');
     }
 
     /**
@@ -57,7 +73,7 @@ class TarefaController extends Controller
      */
     public function edit(Tarefa $tarefa)
     {
-        //
+        return view('tarefa_editar', compact('tarefa'));
     }
 
     /**
@@ -69,7 +85,16 @@ class TarefaController extends Controller
      */
     public function update(Request $request, Tarefa $tarefa)
     {
-        //
+        $tarefa->titulo = $request->input("titulo");
+        $tarefa->id_usuario = $request->input("id_usuario");
+        $tarefa->id_tipo = $request->input("id_tipo");
+        $tarefa->privacidade = $request->input("privacidade");
+        $tarefa->descricao = $request->input("descricao");
+        $tarefa->tipo = $request->input("tipo");
+        $tarefa->status = $request->input("status");
+        $tarefa->data_conclusao = $request->input("data_conclusao");
+        $tarefa->save();
+        return redirect()->route('tarefas.index');
     }
 
     /**
@@ -80,6 +105,7 @@ class TarefaController extends Controller
      */
     public function destroy(Tarefa $tarefa)
     {
-        //
+        $tarefa->delete();
+        return redirect()->route('tarefas.index');
     }
 }

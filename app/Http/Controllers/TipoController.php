@@ -14,7 +14,13 @@ class TipoController extends Controller
      */
     public function index()
     {
-        //
+        $tipos = Tipo::all();
+        return view('tipos_listar', compact('tipos'));
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
     /**
@@ -24,7 +30,7 @@ class TipoController extends Controller
      */
     public function create()
     {
-        //
+        return view('tipo_cadastrar');
     }
 
     /**
@@ -35,7 +41,17 @@ class TipoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tipo = new Tipo();
+        $tipo->titulo = $request->input("titulo");
+        $tipo->id_usuario = $request->input("id_usuario");
+        $tipo->id_tipo = $request->input("id_tipo");
+        $tipo->privacidade = $request->input("privacidade");
+        $tipo->descricao = $request->input("descricao");
+        $tipo->tipo = $request->input("tipo");
+        $tipo->status = $request->input("status");
+        $tipo->data_conclusao = $request->input("data_conclusao");
+        $tipo->save();
+        return redirect()->route('tipos.index');
     }
 
     /**
@@ -57,7 +73,7 @@ class TipoController extends Controller
      */
     public function edit(Tipo $tipo)
     {
-        //
+        return view('tipo_editar', compact('tipo'));
     }
 
     /**
@@ -69,7 +85,16 @@ class TipoController extends Controller
      */
     public function update(Request $request, Tipo $tipo)
     {
-        //
+        $tipo->titulo = $request->input("titulo");
+        $tipo->id_usuario = $request->input("id_usuario");
+        $tipo->id_tipo = $request->input("id_tipo");
+        $tipo->privacidade = $request->input("privacidade");
+        $tipo->descricao = $request->input("descricao");
+        $tipo->tipo = $request->input("tipo");
+        $tipo->status = $request->input("status");
+        $tipo->data_conclusao = $request->input("data_conclusao");
+        $tipo->save();
+        return redirect()->route('tipos.index');
     }
 
     /**
@@ -80,6 +105,7 @@ class TipoController extends Controller
      */
     public function destroy(Tipo $tipo)
     {
-        //
+        $tipo->delete();
+        return redirect()->route('tipos.index');
     }
 }
