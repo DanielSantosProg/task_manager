@@ -18,8 +18,8 @@
             <label for="privacidade">Privacidade</label>
             <select class = "form-control" id="privacidade" name="privacidade">
                 <option selected>Selecione aqui</option>
-                <option value="1">Pública</option>
-                <option value="2">Privada</option>
+                <option value="Publica">Pública</option>
+                <option value="Privada">Privada</option>
             </select>           
             <button class = "btn btn-primary" type = "submit">Cadastrar!</button>
         </div>
