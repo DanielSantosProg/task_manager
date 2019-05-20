@@ -83,7 +83,8 @@ class TarefaController extends Controller
      */
     public function edit(Tarefa $tarefa)
     {
-        return view('tarefa_editar', compact('tarefa'));
+        $tipos = Tipo::all();
+        return view('tarefa_editar', compact('tarefa','tipos'));
     }
 
     /**
@@ -96,11 +97,10 @@ class TarefaController extends Controller
     public function update(Request $request, Tarefa $tarefa)
     {
         $tarefa->titulo = $request->input("titulo");
-        $tarefa->id_usuario = $request->input("id_usuario");
+        $tarefa->id_usuario = Auth::user()->id;
         $tarefa->id_tipo = $request->input("id_tipo");
         $tarefa->privacidade = $request->input("privacidade");
         $tarefa->descricao = $request->input("descricao");
-        $tarefa->tipo = $request->input("tipo");
         $tarefa->status = $request->input("status");
         $tarefa->data_conclusao = $request->input("data_conclusao");
         $tarefa->save();

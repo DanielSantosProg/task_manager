@@ -47,7 +47,10 @@
                 </li>
                 <li @if($current == "usuarios") class = "active" @endif >
                     <a href="#usuariosSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Usuários</a>
-                    <ul class="collapse list-unstyled" id="usuariosSubmenu">                        
+                    <ul class="collapse list-unstyled" id="usuariosSubmenu">
+                        <li>
+                            <a href="{{route('usuarios.create')}}">Cadastrar novo usuário</a>
+                        </li>                     
                         <li>
                             <a href="{{route('usuarios.index')}}">Listar usuarios</a>
                         </li>

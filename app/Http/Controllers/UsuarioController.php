@@ -42,14 +42,13 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario = new Usuario();
-        $usuario->nome = $request->input("nome");
+        $usuario = new User();
+        $usuario->name = $request->input("name");
         $usuario->sexo = $request->input("sexo");
         $usuario->data_nasc = $request->input("data_nasc");
         $usuario->email = $request->input("email");
         $usuario->telefone = $request->input("telefone");
-        $usuario->login = $request->input("login");
-        $usuario->senha = $request->input("senha");
+        $usuario->password = $request->input("password");
         $usuario->save();
         return redirect()->route('usuarios.index');
     }
@@ -60,7 +59,7 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function show(Usuario $usuario)
+    public function show(User $usuario)
     {
         //
     }
@@ -71,7 +70,7 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usuario $usuario)
+    public function edit(User $usuario)
     {
         return view('usuario_editar', compact('usuario'));
     }
@@ -83,15 +82,14 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, User $usuario)
     {
-        $usuario->nome = $request->input("nome");
+        $usuario->name = $request->input("name");
         $usuario->sexo = $request->input("sexo");
         $usuario->data_nasc = $request->input("data_nasc");
         $usuario->email = $request->input("email");
         $usuario->telefone = $request->input("telefone");
-        $usuario->login = $request->input("login");
-        $usuario->senha = $request->input("senha");
+        $usuario->password = $request->input("password");
         $usuario->save();
         return redirect()->route('usuarios.index');
     }
@@ -102,7 +100,7 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuario $usuario)
+    public function destroy(User $usuario)
     {
         $usuario->delete();
         return redirect()->route('usuarios.index');
