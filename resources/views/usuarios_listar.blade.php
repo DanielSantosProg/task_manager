@@ -1,6 +1,7 @@
 @extends('layouts.base', ["current"=>"tipos"])
 
 @section('body')
+<h1>Lista de usuários</h1>
 <table class="table table-hover">
         <thead>
           <tr>
@@ -9,8 +10,7 @@
             <th scope="col">Email</th>
             <th scope="col">Sexo</th>
             <th scope="col">Data de nascimento</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">Ações</th>
+            <th scope="col">Telefone</th>            
           </tr>
         </thead>
         <tbody>

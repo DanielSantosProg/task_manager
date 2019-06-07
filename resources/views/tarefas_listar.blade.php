@@ -5,6 +5,7 @@
 $user = Auth::user()->id;
 $tarefass = DB::table('tarefas')->where('id_usuario', $user)->get();
 @endphp
+<h1>Lista de tarefas</h1>
 <table class="table table-hover">
         <thead>
           <tr>

@@ -4,7 +4,7 @@
     <form action = "{{route('tarefas.store')}}" method = "POST" enctype="multipart/form-data">
         @csrf
         <div class = "form-group">
-            <h1>Cadastro de Produtos</h1>
+            <h1>Cadastro de Tarefa</h1>
             <label for="titulo">Título: </label>
             <input type = "text" class = "form-control" id="titulo" name="titulo">
             <label for="descricao">Descrição: </label>

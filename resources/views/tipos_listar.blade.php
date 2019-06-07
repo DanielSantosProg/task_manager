@@ -2,6 +2,7 @@
 
 @section('body')
 <table class="table table-hover">
+    <h1>Tipos de tarefas</h1>
         <thead>
           <tr>
             <th scope="col">ID</th>
