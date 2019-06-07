@@ -21,7 +21,7 @@
 
             <ul class="list-unstyled components">
                 <li @if($current == "principal") class = "active" @endif>
-                    <a href="/">Página Inicial</a>
+                    <a href="/inicial">Página Inicial</a>
                 </li>
                 <li @if($current == "tarefas") class = "active" @endif>
                     <a href="#tarefasSubmenu"  data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Tarefas</a>
@@ -49,7 +49,7 @@
                     <a href="#usuariosSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Usuários</a>
                     <ul class="collapse list-unstyled" id="usuariosSubmenu">
                         <li>
-                            <a href="{{route('usuarios.create')}}">Cadastrar novo usuário</a>
+                            <a href="{{route('usuarios.edit', Auth::user()->id)}}">Editar seu cadastro</a>
                         </li>                     
                         <li>
                             <a href="{{route('usuarios.index')}}">Listar usuarios</a>

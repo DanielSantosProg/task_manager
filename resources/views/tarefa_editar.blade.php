@@ -7,9 +7,9 @@
         <div class = "form-group">
             <h1>Edição de tarefa</h1>
             <label for="titulo">Título: </label>
-            <input type = "text" class = "form-control" id="titulo" name="titulo">
+            <input type = "text" class = "form-control" id="titulo" name="titulo" value="{{ old( 'titulo', $tarefa->titulo) }}">
             <label for="descricao">Descrição: </label>
-            <input type = "text" class = "form-control" id="descricao" name="descricao">                                
+            <input type = "text" class = "form-control" id="descricao" name="descricao" value="{{ old( 'descricao', $tarefa->descricao) }}">                                
             <label for="id_tipo">ID do tipo: </label>
             <select class = "form-control" id="id_tipo" name="id_tipo">
                 @foreach($tipos as $tipo)
@@ -30,7 +30,7 @@
                 <option value="Concluido">Concluído</option>
             </select>
             <label for="data_conclusao">Data de conclusão: </label>
-            <input type = "text" class = "form-control" id="data_conclusao" name="data_conclusao">                    
+            <input type = "text" class = "form-control" id="data_conclusao" name="data_conclusao" value="{{ old( 'data_conclusao', $tarefa->data_conclusao) }}">                    
             <button class = "btn btn-primary" type = "submit">Salvar</button>
         </div>
     </form>

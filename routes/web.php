@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/inicial', function () {
+    return view('inicial');
+});
+
 Route::get('/home', function () {
     return view('inicial');
 });

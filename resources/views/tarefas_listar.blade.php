@@ -1,6 +1,10 @@
 @extends('layouts.base', ["current"=>"tipos"])
 
 @section('body')
+@php
+$user = Auth::user()->id;
+$tarefass = DB::table('tarefas')->where('id_usuario', $user)->get();
+@endphp
 <table class="table table-hover">
         <thead>
           <tr>
@@ -16,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-            @foreach ($tarefas as $task)
+            @foreach ($tarefass as $task)
             <tr>
                 <td>{{ $task->id }}</td>
                 <td>{{ $task->titulo }}</td>
